@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dark_mode" />
+
+    <style>
+        .material-symbols-outlined {
+            font-size: 50px;
+            position: absolute;
+            top:2%;
+            left: 80%;
+            transform: translate(-50,-50);
+
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 300,
+                'GRAD' 0,
+                'opsz' 24
+        }
+        p,#Background,.material-symbols-outlined{
+            transition: 1s;
+        }
+    </style>
+
+    <title> Similar_Vocabulary </title>
+</head>
+<body id = "Background">
+    <span class="material-symbols-outlined">dark_mode</span>
+    <p id="result"> </p>
+</body>
+
+    <script>
+        warehouse = ['Broaden horizons', '形容词：', 
+        'against', '=', 'oppose', 'all', '=', 'entire', 'angry', '=', 'bitter', 'bored', '=', 'dull', 'cheap', '=', 'affordable', 'civic', '=', 'civilian', 'colossal', '=', 'great', 'communicable', '=', 'infectious', 'complex', '=', 'complicated', 'continuous', '=', 'consecutive', 'desperate', '=', 'terrible', '=', 'awful', '=', 'disappointment', 'effective', '=', 'useful', '=', 'practical', 'exceptional', '=', 'famous', '=', 'renowned', '=', 'prominent', '=', 'excellent', 'excessive', '=', 'over', 'executive', '=', 'unique', 'expensive', '=', 'costly', '=', 'invaluable', 'explicit', '=', 'clear', 'fast', '=', 'rapid', '=', 'swift', '=', 'quick', 'finite', '=', 'limited', 'first', '=', 'steep', '=', 'swift', 'following', '=', 'next', 'global', '≈', 'international', 'immense', '=', 'infinite', 'important', '=', 'permanent', '=', 'crucial', '=', 'vital', '=', 'key', '=', 'critical', '=', 'significant', 'inevitable', '≈', 'destiny', 'inherent', '=', 'included', 'lonely', '=', 'alone', 'main', '=', 'dominant', '=', 'premier', 'many', '=', 'numerous', '=', 'plenty', 'middle', '=', 'medium', 'modern', '=', 'contemporary', 'native', '=', 'authentic', 'nuts', 'opposite', '=', 'different', 'powerful', '=', 'strong', 'preliminary', '=', 'initial', 'primitive', '=', 'old', 'rare', '=', 'exotic', 'remarkable', '=', 'outstanding', '=', 'excellent', 'rural', '=', 'far', 'sensible', '=', 'smart', '=', 'intelligent', '=', 'wise', 'symbolic', 'sophisticated', '=', 'elegant', 'specific', '=', 'special', '=', 'particular', 'suitable', '=', 'not', 'hostile', 'thorough', '=', 'radical', 'traditional', '=', 'conventional', '=', 'conservative', 'tremendous', '=', 'extreme', 'unavoidable', '=', 'inevitable', 'unfortunate', '=', 'poor', 'unstable', '=', 'rocky', 'usual', '=', 'regular', '动词：', 'affect', '=', 'impact', '=', 'effect', 'allow', '=', 'permit', 'anticipate', '=', 'expect', 'attach', '=', 'connect', 'attain', '=', 'achieve', '=', 'gain', 'attend', '=', 'join', '=', 'participate', 'build', '=', 'construct', 'burst', '=', 'explode', 'buy', '=', 'purchase', 'call', '=', 'dial', 'cede', '=', 'give', 'up', 'change', '=', 'shift', 'change', '=', 'shift', '=', 'convert', 'choose', '=', 'select', '=', 'pick', 'conceive', '=', 'think', 'confine', '=', 'limit', 'cope', '=', 'tackle', 'creat', '=', 'fund', 'decrease', '=', 'decline', 'dedicate', '=', 'contribute', 'determine', '=', 'decide', 'eliminate', '=', 'reduce', 'embrace', '≈', 'accept', 'engage', '=', 'appeal', '=', 'attract', 'engage', '=', 'encourage', '=', 'advocate', 'enhance', '=', 'improve', '=', 'boost', '=', 'grow', '=', 'increase', '=', 'strengthen', 'esteem', '=', 'respect', 'execute', '=', 'implement', '=', 'enforce', 'explore', '=', 'research', 'express', '=', 'indicate', 'extract', '=', 'gain', '=', 'acquire', 'find', '=', 'seek', 'fulfill', '=', 'satisfy', '=', 'achieve', '=', 'meet', 'grasp', '=', 'understand', '=', 'comprehend', 'heal', '=', 'discovery', '=', 'treat', 'hire', '=', 'recruit', 'hop', '=', 'jump', 'intend', '=', 'want', 'involve', '=', 'need', '=', 'request', 'keep', '=', 'remain', '=', 'retain', '=', 'reserve', 'like', '=', 'prefer...', 'to', '...', 'perceive', '=', 'think', '=', 'believe', '=', 'regard', '=', 'conceive', 'pray', '=', 'wish', '=', 'hope', 'prevent', '=', 'avoid', 'promote', '=', 'advocate', 'rely', '=', 'depend', 'resume', '=', 'continue', '=', 'proceed', 'safeguard', '=', 'preserve', '=', 'save', '=', 'maintain', '=', 'sustain', '=', 'retain/', 'show', '=', 'demonstrate', '=', 'display', 'sperate', '=', 'distinguish', '=', 'detach', 'stop', '=', 'suspend', '=', 'cease', '=', 'suppress', 'understand', '=', 'realize', 'vary', '=', 'differ', '名词：', 'agreement', '=', 'contract', '=', 'covenant', 'alliance', '=', 'league', 'assessment', 'ballot', '=', 'vote', 'basin', '=', 'sink', 'bond', '=', 'relationship', 'border', '=', 'boundary', 'car', '=', 'vehicle', 'cent', '=', 'penny', 'cinema', '=', 'threat', 'circumstance', '=', 'occurrence', '=', 'situation', 'client', '=', 'customer', 'conference', '=', 'meeting', '=', 'assembly', 'consideration', 'contrast', '=', 'comparison', 'cord', '=', 'cable', 'corporation', '=', 'company', '=', 'enterprise', 'correspondence', '=', 'relationship', 'cow', '=', 'cattle', 'destiny', '=', 'fate', 'department', '=', 'ministry', 'desire', '=', 'urge', 'destruction', '=', 'damage', 'disadvantage', '=', 'drawback', '=', 'demerit', '=', 'cons', 'discount', '=', 'rate', 'discrimination', '=', 'racism', 'duration', '=', 'period', 'duty', '=', 'obligation', 'element', '=', 'factor', 'elementary', '=', 'junior', 'emperor', '=', 'king', 'employee', '=', 'staff', 'esteem', '=', 'respect', 'estimate', '=', 'quote', 'event', '=', 'intent', 'exchange', '=', 'interchange', 'expertise', 'explanation', '=', 'interpretation', 'express', '=', 'performance', 'fare', '=', 'expense', 'friend', '=', 'companion', '=', 'company', '=', 'mate', 'grief', '=', 'depression', 'hazard', '=', 'danger', 'identity', '=', 'indentation', 'incentives', 'innocence', '><guilt', 'inspector', '=', 'sheriff', 'island', '=', 'isle', 'jungle', '=', 'forest', 'junk', '=', 'trash', '=', 'garbage', '=', 'rubbish', 'liberty', '=', 'freedom', 'manner', '=', 'method', '=', 'way', '=', 'approach', 'momentum', '=', 'motivate', 'opponent', '=', 'rival', '=', 'competitor', 'order', '=', 'sequence', 'outfit', '=', 'costume', 'pace', '=', 'speed', 'pace', '=', 'speed', 'pain', '=', 'misery', 'penalty', 'paradise', '=', 'heaven', 'part', '=', 'portion', '=', 'fraction', 'patience', '=', 'tolerance', 'point', '=', 'perspective', '=', 'idea', 'possession', '=', 'property', 'power', '=', 'competence', '=', 'ability', '=', 'strength', 'pressure', '=', 'stress', '=', 'distress', 'propaganda', '=', 'publicity', 'protection', '=', 'preservation', 'pursuit', '=', 'dream', '=', 'aim', '=', 'goal', '=', 'purpose', '=', 'objective', '=', 'intent', 'recipient', '=', 'receiver', 'recipient', '=', 'receiver', 'recovery', '=', 'restoration', 'region', '=', 'area', '=', 'distinct', 'rail', '=', 'railway', '=', 'railroad', 'regime', '=', 'rule', 'scope', '=', 'extent', '=', 'range', 'suit', '=', 'outfit', 'shortage', '=', 'drawback', '=', 'demerit', 'site', '=', 'station', '=', 'venue', 'slot', '=', 'session', '≈', 'section', 'student', '=', 'pupil', 'tactics', '=', 'strategy', '=', 'plan', '=', 'initiative', 'task', '=', 'mission', 'territory', '=', 'realm', 'thing', '=', 'matter', '=', 'affair', 'triumph', '=', 'success', 'validity', 'verbal', '=', 'oral', 'work', '=', 'cooperation', '副词：', 'bare', '=', 'minimal', 'barely', '=', 'hardly', 'caution', 'great', '=', 'terrific', '=', 'fabulous', 'together', '=', 'jointly', 'sheer', '=', 'enough', '=', 'sufficient', '=', 'moderate', '介词：', 'charge', 'furthermore', '=', 'in', 'additional', '連接词：', 'ought', '=', 'should', 'about', '=', 'concerning', '=', 'regarding', '不确定词性：', 'both', '=', 'either', 'shuttle']
+
+        let material_symbols_outlined = document.getElementsByClassName("material-symbols-outlined")
+        let light = true
+        let background_color = document.getElementById("Background")
+        let content = document.getElementsByClassName("content")
+        let result = document.getElementById("result")
+
+        let temporary_vocabulary = ""
+
+        // let v = 0
+        // let v_final = warehouse.length
+
+        for (let v = 0; v < warehouse.length; v++) {
+            
+            if ( warehouse[v] == "="  || warehouse[v] == "≈"){
+                // temporary_vocabulary.push(warehouse[v])
+                temporary_vocabulary = temporary_vocabulary + warehouse[v]
+            }else{
+                // While current element is a vocabulary
+                if ( warehouse[v+1] == "=" || warehouse[v+1] == "≈"){
+                    temporary_vocabulary = temporary_vocabulary + warehouse[v]
+                }else{
+                    // document.write(`<br>`)
+                    temporary_vocabulary = temporary_vocabulary + warehouse[v]
+                    document.write(`<p class = "content"> ${temporary_vocabulary} </p>`)
+
+                    temporary_vocabulary = ""
+                    continue
+                }
+            }
+        }
+
+        let Apple_light_color_warehouse = {
+            "red":"#FF3B30","orange":"#FF9500","yellow":"#FFCC00","green":"34C759","mini":"#00C7BE","teal":"#30B0C7",
+            "cyan":"#32ADE6",   "blue":"#007BFF","indigo":"#5856D6","purple":"#AF52DE","pink":"#FF2D54","brown":"#A2855E",
+
+            "gray_1":"#8E8E93","gray_2":"#AEAEB2","gray_3":"#C7C7CC","gray_4":"#D1D1D6","gray_5":"#E5E5EA","gray_6":"#F2F2F7",
+            white:"#FFFFFF",
+            "black":"#000000"
+        }
+        let Apple_dark_color_warehouse = {
+            red:"#FF453A",orange:"FF9F0A",yellow:"#FFD60A",green:"#30D158",mini:"#63E6E2",teal:"#40C8E0",
+            cyan:"#64D3FF",blue:"#0A84FF",indigo:"#5E5CE6",purple:"#BF5AF2",pink:"#FF375F",brown:"#AC8f68",
+
+            gray_1:"#8E8E93",gray_2:"#636366",gray_3:"#48484A",gray_4:"#3A3A3C",gray_5:"#2C2C2E",gray_6:"#1C1C1E",while:"#FFFFFF",black:"#000000"
+        }
+
+        function Color_Painter(
+            color_container
+        ){
+            let color_classification = ["red","orange","yellow","green","mini","teal","cyan","blue","indigo","purple","pink","brown"]
+            if ( light == true ){
+                for (let index = 0; index < 11; index++) {
+                    // Use the these code to check whether the elements are/is class or id
+                    if ( color_container[index].length == 0){
+
+                        background_color.style.backgroundColor = "#FFFFFF"
+                        material_symbols_outlined[0].style.color = "#000000"
+
+                        for (let q = 0; q < content.length; q++) {
+                            content[q].style.color = "#000000"
+                        }
+
+                        continue;
+                    }
+                    for (let index_second_layer = 0; index_second_layer < color_container[index].length; index_second_layer++) {
+
+                        // if ( color_container[index][index_second_layer].length){
+                        //     let element_looper = color_container[index][index_second_layer].length
+
+                        //     for (let j = 0; j < element_looper; j++) {
+                        //         color_container[index][index_second_layer][j].style.color = Apple_light_color_warehouse[color_classification[index]]
+                        //     }
+                        // }else{
+                        //     color_container[index][index_second_layer].style.color = Apple_light_color_warehouse[color_classification[index]]
+                        // }
+                    }
+                }
+
+                light = false
+                // return light
+            }else{
+                for (let index = 0; index < 11; index++) {
+                    if ( color_container[index].length == 0){
+                        background_color.style.backgroundColor = "#1C1C1E"
+                        material_symbols_outlined[0].style.color = "#FFFFFF"
+
+                        for (let q = 0; q < content.length; q++) {
+                            content[q].style.color = "#FFFFFF"
+                        }
+                        continue;
+                    }
+                    for (let index_second_layer = 0; index_second_layer < color_container[index].length; index_second_layer++) {
+                        // Print the color into there elements
+                        // color_container[index][index_second_layer].style.color = Apple_dark_color_warehouse[color_classification[index]]
+                        // if ( color_container[index][index_second_layer].length){
+                        //     let element_looper = color_container[index][index_second_layer].length
+
+                        //     for (let j = 0; j < element_looper; j++) {
+                        //         color_container[index][index_second_layer][j].style.color = Apple_dark_color_warehouse[color_classification[index]]
+                        //     }
+                        // }else{
+                        //     color_container[index][index_second_layer].style.color = Apple_dark_color_warehouse[color_classification[index]]
+                        // }
+                    }
+                }
+
+                light = true
+                // return light
+            }
+        }
+
+        Color_Painter(
+           [[],//red
+            [],//orange
+            [],//yellow
+            [],//green
+            [],//mini
+            [],//teal
+            [],//cyan
+            [],//blue
+            [],//indigo
+            [],//purple
+            []]//brown
+        )
+        material_symbols_outlined[0].addEventListener("click",function(){
+            Color_Painter(
+                [[],//red
+                [],//orange
+                [],//yellow
+                [],//green
+                [],//mini
+                [],//teal
+                [],//cyan
+                [],//blue
+                [],//indigo
+                [],//purple
+                []]//brown
+            )
+        })
+    </script>
+</html>

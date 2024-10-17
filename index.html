@@ -8,9 +8,9 @@
     <style>
         .material-symbols-outlined {
             font-size: 50px;
-            position: absolute;
+            position: fixed;
             top:2%;
-            left: 80%;
+            left: 84%;
             transform: translate(-50,-50);
 
             font-variation-settings:
@@ -22,11 +22,37 @@
         p,#Background,.material-symbols-outlined{
             transition: 1s;
         }
+        #search_box{
+            width: 300px;
+            height: 50px;
+
+            border-radius: 24px;
+            border: #000000;
+            margin-right: 5px;
+        }
+        #commence_search{
+            background-color: #FFFFFF;
+            border: #000000;
+            border-radius: 24px;
+        }
+        #search_component{
+            display: flex;
+
+            position: relative;
+            top:2%;
+            left: 3%;
+            transform: translate(-50,-50);
+        }
     </style>
 
     <title> Similar_Vocabulary </title>
 </head>
 <body id = "Background">
+    <div id="search_component">
+        <input type="search" name="" id="search_box">
+        <button type="button" id="commence_search">Search</button>
+    </div>
+    
     <span class="material-symbols-outlined">dark_mode</span>
     <p id="result"> </p>
 </body>
@@ -40,6 +66,7 @@
         let background_color = document.getElementById("Background")
         let content = document.getElementsByClassName("content")
         let result = document.getElementById("result")
+        let search_component = document.getElementById("search_component")
 
         let temporary_vocabulary = ""
 
@@ -90,13 +117,13 @@
                     // Use the these code to check whether the elements are/is class or id
                     if ( color_container[index].length == 0){
 
-                        background_color.style.backgroundColor = "#FFFFFF"
+                        //These following statement convert the front color and whole background into dark mode
+                        background_color.style.backgroundColor = "#F2F2F7"
                         material_symbols_outlined[0].style.color = "#000000"
 
                         for (let q = 0; q < content.length; q++) {
                             content[q].style.color = "#000000"
                         }
-
                         continue;
                     }
                     for (let index_second_layer = 0; index_second_layer < color_container[index].length; index_second_layer++) {
@@ -112,12 +139,12 @@
                         // }
                     }
                 }
-
                 light = false
-                // return light
             }else{
                 for (let index = 0; index < 11; index++) {
                     if ( color_container[index].length == 0){
+
+                        //These following statement convert the front color and whole background into light mode
                         background_color.style.backgroundColor = "#1C1C1E"
                         material_symbols_outlined[0].style.color = "#FFFFFF"
 
@@ -142,7 +169,6 @@
                 }
 
                 light = true
-                // return light
             }
         }
 
@@ -173,6 +199,24 @@
                 [],//purple
                 []]//brown
             )
+        })
+        
+        background_color.addEventListener("touchstart",function(){
+            let privious_y_Coordinates = window.scrollY
+            background_color.addEventListener("touchend",function(){
+                let current_y_Coordinates = window.scrollY
+                
+                if ( current_y_Coordinates <= privious_y_Coordinates){
+                    // console.log("a")
+                    // scroll upper action 
+                    search_component.style.display = "flex"
+                    search_component.style.position = "fixed"
+                }else{
+                    // console.log("b")
+                    search_component.style.display = "none"
+                    // search_component.style.positiond = "relative"
+                }
+            })
         })
     </script>
 </html>
